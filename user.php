@@ -9,7 +9,7 @@ class User{
     
     public function __construct(){
         if(!isset($this->db)){
-            // Connect to the database
+            
             $conn = new mysqli($this->dbHost, $this->dbUsername, $this->dbPassword, $this->dbName);
             if($conn->connect_error){
                 die("Failed to connect with MySQL: " . $conn->connect_error);
@@ -19,11 +19,7 @@ class User{
         }
     }
     
-    /*
-     * Returns rows from the database based on the conditions
-     * @param string name of the table
-     * @param array select, where, order_by, limit and return_type conditions
-     */
+    
     public function getRows($conditions = array()){
         $sql = 'SELECT ';
         $sql .= array_key_exists("select",$conditions)?$conditions['select']:'*';
@@ -71,11 +67,7 @@ class User{
         return !empty($data)?$data:false;
     }
     
-    /*
-     * Insert data into the database
-     * @param string name of the table
-     * @param array the data for inserting into the table
-     */
+   
     public function insert($data){
         if(!empty($data) && is_array($data)){
             $columns = '';
@@ -101,14 +93,10 @@ class User{
         }
     }
     
-    /*
-     * Update data into the database
-     * @param string name of the table
-     * @param array the data for inserting into the table
-     */
+    
     public function update($data, $conditions){
         if(!empty($data) && is_array($data) && !empty($conditions)){
-            //prepare columns and values sql
+            
             $cols_vals = '';
             $i = 0;
             if(!array_key_exists('modified',$data)){
@@ -120,7 +108,7 @@ class User{
                 $i++;
             }
             
-            //prepare where conditions
+          
             $whereSql = '';
             $ci = 0;
             foreach($conditions as $key => $value){
@@ -129,10 +117,10 @@ class User{
                 $ci++;
             }
             
-            //prepare sql query
+           
             $query = "UPDATE ".$this->userTbl." SET ".$cols_vals." WHERE ".$whereSql;
 
-            //update data
+            
             $update = $this->db->query($query);
             return $update?true:false;
         }else{

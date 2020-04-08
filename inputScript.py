@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 
 import regex    
 from tldextract import extract
@@ -16,10 +16,9 @@ def url_having_ip(url):
                     '((0x[0-9a-fA-F]{1,2})\\.(0x[0-9a-fA-F]{1,2})\\.(0x[0-9a-fA-F]{1,2})\\.(0x[0-9a-fA-F]{1,2})\\/)'  #IPv4 in hexadecimal
                     '(?:[a-fA-F0-9]{1,4}:){7}[a-fA-F0-9]{1,4}',url)     #Ipv6
     if match:
-        #print match.group()
         return 1
     else:
-        #print 'No matching pattern found'
+
         return -1
 
 
@@ -78,13 +77,13 @@ def sub_domain(url):
 
 def SSLfinal_State(url):
     try:
-#check wheather contains https       
+     
         if(regex.search('^https',url)):
             usehttps = 1
         else:
             usehttps = 0
-#getting the certificate issuer to later compare with trusted issuer 
-        #getting host name
+
+
         subDomain, domain, suffix = extract(url)
         host_name = domain + "." + suffix
         context = ssl.create_default_context()
@@ -99,20 +98,20 @@ def SSLfinal_State(url):
         else:
             certificate_Auth = certificate_Auth[0] 
         trusted_Auth = ['Comodo','Symantec','GoDaddy','GlobalSign','DigiCert','StartCom','Entrust','Verizon','Trustwave','Unizeto','Buypass','QuoVadis','Deutsche Telekom','Network Solutions','SwissSign','IdenTrust','Secom','TWCA','GeoTrust','Thawte','Doster','VeriSign']        
-#getting age of certificate
+
         startingDate = str(certificate['notBefore'])
         endingDate = str(certificate['notAfter'])
         startingYear = int(startingDate.split()[3])
         endingYear = int(endingDate.split()[3])
         Age_of_certificate = endingYear-startingYear
         
-#checking final conditions
+
         if((usehttps==1) and (certificate_Auth in trusted_Auth) and (Age_of_certificate>=1) ):
-            return -1 #legitimate
+            return -1
         elif((usehttps==1) and (certificate_Auth not in trusted_Auth)):
-            return 0 #suspicious
+            return 0 
         else:
-            return 1 #phishing
+            return 1 
         
     except Exception as e:
         
@@ -132,17 +131,17 @@ def domain_registration(url):
         return 0
 
 def favicon(url):
-    #ongoing
+    
     return 0
 
 def port(url):
-    #ongoing
+    
     return 0
 
 def https_token(url):
     subDomain, domain, suffix = extract(url)
     host =subDomain +'.' + domain + '.' + suffix 
-    if(host.count('https')): #attacker can trick by putting https in domain part
+    if(host.count('https')): 
         return 1
     else:
         return -1
@@ -248,7 +247,7 @@ def Links_in_tags(url):
         return 0
 
 def sfh(url):
-    #ongoing
+
     return 0
 
 def email_submit(url):
@@ -263,27 +262,27 @@ def email_submit(url):
         return 0
 
 def abnormal_url(url):
-    #ongoing
+    
     return 0
 
 def redirect(url):
-    #ongoing
+    
     return 0
 
 def on_mouseover(url):
-    #ongoing
+    
     return 0
 
 def rightClick(url):
-    #ongoing
+    
     return 0
 
 def popup(url):
-    #ongoing
+    
     return 0
 
 def iframe(url):
-    #ongoing
+    
     return 0
 
 def age_of_domain(url):
@@ -301,28 +300,28 @@ def age_of_domain(url):
         return 0
         
 def dns(url):
-    #ongoing
+    
     return 0
 
 def web_traffic(url):
-    #ongoing
+    
     return 0
 
 def page_rank(url):
-    #ongoing
+    
     return 0
 
 def google_index(url):
-    #ongoing
+    
     return 0
 
 
 def links_pointing(url):
-    #ongoing
+    
     return 0
 
 def statistical(url):
-    #ongoing
+    
     return 0
 
 def main(url):

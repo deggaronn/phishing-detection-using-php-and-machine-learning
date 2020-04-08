@@ -59,7 +59,6 @@ if (isset($_POST['logout'])) {
 				<div id="formt" align="center">
 					<table width="550" border="1" cellpadding="1" cellspacing="1" id="registration" style="margin-bottom: 20px;"> 
 						<tr>
-							<!-- <th>User_id</th> -->
 							<th>Rate</th>
 							<th>Name</th>
 							<th>email</th>
@@ -68,7 +67,6 @@ if (isset($_POST['logout'])) {
 						<?php 
 						while($user_feedback= mysqli_fetch_assoc($records)){
 							echo "<tr>";
- 	// echo "<td>".$user_feedback['user_id']."</td> " ;
 							echo "<td>".$user_feedback['rate']."</td>";
 							echo "<td>".$user_feedback['name']."</td>";
 							echo "<td>".$user_feedback['email']."</td>";

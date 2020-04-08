@@ -1,17 +1,17 @@
 <?php
 session_start();
 
-// initializing variables
+
 $username = "";
 $email    = "";
 $errors = array(); 
 
-// connect to the database
+
 $db = mysqli_connect('localhost', 'root', '','php_project_db');
 
-// REGISTER USER
+
 if (isset($_POST['register'])) {
-  // receive all input values from the form
+
   $firstname = mysqli_real_escape_string($db, $_POST['fname']);
   $lastname = mysqli_real_escape_string($db, $_POST['lname']);
   $username = mysqli_real_escape_string($db, $_POST['user']);
@@ -20,18 +20,16 @@ if (isset($_POST['register'])) {
   $password_2 = mysqli_real_escape_string($db, $_POST['pass2']);
   $contact = mysqli_real_escape_string($db, $_POST['phone']);
 
-  // form validation: ensure that the form is correctly filled ...
-  // by adding (array_push()) corresponding error unto $errors array
+  
   if ($password_1 != $password_2) {
     array_push($errors, "The two passwords do not match");
   }
-  // first check the database to make sure 
-  // a user does not already exist with the same username and/or email
+  
   $user_check_query = "SELECT * FROM registration WHERE username='$username' OR email='$email' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
   
-  if ($user) { // if user exists
+  if ($user) { 
     if ($user['username'] === $username) {
       array_push($errors, "Username already exists");
     }
@@ -41,26 +39,9 @@ if (isset($_POST['register'])) {
     }
   }
 
-  // Finally, register user if there are no errors in the form
-//   if (count($errors) == 0) {
-//     $password = md5($password_1);//encrypt the password before saving in the database
-
-//     $query = "INSERT INTO registration (username, email, address,contact,password) 
-//           VALUES('$username', '$email', '$address','$contact','$password_1')";
-//     $q=mysqli_query($db, $query);
-//               if($q)
-//        {
-//         echo"<script>alert('Sucessfully Register')</script>";
-//        }
-//    else
-//   {
-// echo"<script>alert('Error')</script>";
-// }
-
-
-//   }
+  
   if (count($errors) == 0) {
-    $password = md5($password_1);//encrypt the password before saving in the database
+    $password = md5($password_1);
 
     if (isset($_POST['user_type'])) {
       $user_type = e($_POST['user_type']);
@@ -74,10 +55,10 @@ if (isset($_POST['register'])) {
       VALUES('$firstname', '$lastname', '$username', '$email', '$contact', '$password', 'user')";
       mysqli_query($db, $query);
 
-      // get id of the created user
+     
       $logged_in_user_id = mysqli_insert_id($db);
 
-      $_SESSION['username'] = getUserById($logged_in_user_id); // put logged in user in session
+      $_SESSION['username'] = getUserById($logged_in_user_id); 
       header('location: login.php');        
     }
   }

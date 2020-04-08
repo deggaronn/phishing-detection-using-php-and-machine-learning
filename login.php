@@ -94,8 +94,8 @@
 	</section>
 
 	<footer>
-		<p>Phishing Website Detection System, Copyright &copy, 2018<br></p>
-		<p>Contact us:<br>Phone no: 9813225420<br>Email: sujan.dhungana321@hotmail.com</p>
-	</footer>
+	<p>Phishing Website Detection System, Copyright &copy, 2020<br></p>
+	<p>Github:<br>github.com/genialkartik<br>Email: kartik.11702672@lpu.in</p>
+</footer>
 </body>
 </html>

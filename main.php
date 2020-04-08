@@ -18,18 +18,17 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
 	<link rel="stylesheet" type="text/css" href="./css/styles2.css">
-	<!-- <link rel="stylesheet" type="text/css" href="./css/form.css"> -->
-	<!-- <script src="form.js"></script> -->
+
 </head>
 <body>
 	<header>
 		<div class="container">
 			<div id="logo">
-				<h1><span class="highlight" onclick="location='main.php'">Phishing</span><span class="second" onclick="location='main.php'">Detection</span></h1>
+				<h1><span class="highlight" onclick="location='main.php'">Phishing</span><span class="second" onclick="location='main.php'">Detector</span></h1>
 			</div>
 			<nav>
 				<ul>
-					<li class="current"><a href="main.php">Home</a></li>
+					<li class="current"><a href="main.php">Dashboard</a></li>
 					<li><a href="register.php">Register</a></li>
 					<li><a href="login.php">Login</a></li>
 				</ul>
@@ -38,8 +37,8 @@
 	</header>
 
 	<section id="showcase">
-		<div class="container">
-			<h1>Do Not Make Mistake - Check Every Website</h1>
+		<div class="container"><br><br>
+		<h1>Do Not Make Mistake - Check Every Website</h1>
 			<p>Stay Alert!!!, Be Safe From The Phishers</p>
 		</div>
 	</section>
@@ -51,12 +50,10 @@
 				<input type="text" placeholder="Paste URL..." name="url" required="">
 				<button type="submit" name="submit" class="button1"><span>CHECK</span></button><span id="result"><?php 
 
-// initializing variables
 				$username = "";
 				$email    = "";
 				$errors = array(); 
 
-// connect to the database
 				$db = mysqli_connect('localhost', 'root', '', 'php_project_db');
 
 
@@ -66,7 +63,7 @@
 					if (count($errors) == 0) {
 						$query = "SELECT * FROM urls WHERE url='$url'";
 						$results = mysqli_query($db, $query);
-						if (mysqli_num_rows($results) == 1) {
+						if (mysqli_num_rows($results) >= 1) {
 							$check_url = mysqli_fetch_assoc($results);
 							if ($check_url['type'] == '1') {
 								echo "<font color='red'>THIS IS PHISHING URL</font>";     
@@ -88,35 +85,35 @@
 	<div class="slideshow-container">
 
 <div class="mySlides fade">
-  <img src="css/img/Capture.png" style="width:100% height:100%">
+  <img src="css/img/Capture.PNG" style="width:100% height:100%">
 </div>
 
 <div class="mySlides fade">
-  <img src="css/img/Capture2.png" style="width:100% height:100%">
+  <img src="css/img/Capture2.PNG" style="width:100% height:100%">
 </div>
 
 <div class="mySlides fade">
-  <img src="css/img/Capture3.png" style="width:100% height:100%">
+  <img src="css/img/Capture3.PNG" style="width:100% height:100%">
 </div>
 
 <div class="mySlides fade">
-  <img src="css/img/Capture4.png" style="width:100% height:100%">
+  <img src="css/img/Capture4.PNG" style="width:100% height:100%">
 </div>
 
 <div class="mySlides fade">
-  <img src="css/img/Capture5.png" style="width:100% height:100%">
+  <img src="css/img/Capture5.PNG" style="width:100% height:100%">
 </div>
 
 <div class="mySlides fade">
-  <img src="css/img/Capture6.png" style="width:100% height:100%">
+  <img src="css/img/Capture6.PNG" style="width:100% height:100%">
 </div>
 
 <div class="mySlides fade">
-  <img src="css/img/Capture7.png" style="width:100% height:100%">
+  <img src="css/img/Capture7.PNG" style="width:100% height:100%">
 </div>
 
 <div class="mySlides fade">
-  <img src="css/img/Capture8.png" style="width:100% height:100%">
+  <img src="css/img/Capture8.PNG" style="width:100% height:100%">
 </div>
 
 <div class="mySlides fade">
@@ -215,8 +212,8 @@
 </section>
 
 <footer>
-	<p>Phishing Website Detection System, Copyright &copy, 2018<br></p>
-	<p>Contact us:<br>Phone no: 9813225420<br>Email: sujan.dhungana321@hotmail.com</p>
+	<p>Phishing Website Detection System, Copyright &copy, 2020<br></p>
+	<p>Github:<br>github.com/genialkartik<br>Email: kartik.11702672@lpu.in</p>
 </footer>
 
 <script>
@@ -237,14 +234,11 @@ function showSlides() {
     }
     slides[slideIndex-1].style.display = "block";  
     dots[slideIndex-1].className += " active";
-    setTimeout(showSlides, 5000); // Change image every 2 seconds
+    setTimeout(showSlides, 5000); 
 }
 </script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript">
-	// $(".reset").bind("click", function() {
-	// 	$("input[type=text], textarea").val("");
-	// });
 </script>
 </body>
 </html>

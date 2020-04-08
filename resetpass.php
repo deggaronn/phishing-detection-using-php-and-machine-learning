@@ -68,12 +68,12 @@ if(!empty($sessData['status']['msg'])){
 				<input type="text" placeholder="Paste URL..." name="url" required="paste url first">
 				<button type="submit" name="submit" class="button1"><span>CHECK</span></button><span id="result"><?php 
 
-// initializing variables
+
 				$username = "";
 				$email    = "";
 				$errors = array(); 
 
-// connect to the database
+
 				$db = mysqli_connect('localhost', 'root', '', 'php_project_db');
 
 
@@ -102,8 +102,8 @@ if(!empty($sessData['status']['msg'])){
 </section>
 
 <footer>
-	<p>Phishing Website Detection System, Copyright &copy, 2018<br></p>
-	<p>Contact us:<br>Phone no: 9813225420<br>Email: sujan.dhungana321@hotmail.com</p>
+	<p>Phishing Website Detection System, Copyright &copy, 2020<br></p>
+	<p>Github:<br>github.com/genialkartik<br>Email: kartik.11702672@lpu.in</p>
 </footer>
 </body>
 </html>

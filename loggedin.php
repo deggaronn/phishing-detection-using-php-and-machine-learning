@@ -63,12 +63,12 @@ if (isset($_POST['logout'])) {
 				<input type="text" placeholder="Paste URL..." name="url" required="">
 				<button type="submit" name="check" class="button1"><span>CHECK</span></button><span id="result"><?php 
 
-// initializing variables
+
 				$username = "";
 				$email    = "";
 				$errors = array(); 
 
-// connect to the database
+
 				$db = mysqli_connect('localhost', 'root', '', 'php_project_db');
 
 
@@ -87,20 +87,20 @@ if (isset($_POST['logout'])) {
 							}
 						}else {
 							set_time_limit(0);
-			// $errors = array();
+
 
 							if(isset($_POST['check']))
 							{
 								$a=$_POST['url'];
-				// if (empty($a)) { array_push($errors, "website is required"); }
+
 								if (filter_var($a, FILTER_VALIDATE_URL) === FALSE) {
 									echo "Enter Proper URL";
 								}
-				// if (count($errors) == 0) {
+
 								else{
 									$result=exec('index.py '.$a);
-				// echo $a."<br>";
-				// echo "IS<br>";  
+
+  
 									if ($result===' THIS IS NOT PHISHING URL') {
 										echo "<font color='green'>THIS IS NOT PHISHING URL</font>";
 									}
@@ -125,8 +125,8 @@ if (isset($_POST['logout'])) {
 </section>
 
 <footer>
-	<p>Phishing Website Detection System, Copyright &copy, 2018<br></p>
-	<p>Contact us:<br>Phone no: 9813225420<br>Email: sujan.dhungana321@hotmail.com</p>
+	<p>Phishing Website Detection System, Copyright &copy, 2020<br></p>
+	<p>Github:<br>github.com/genialkartik<br>Email: kartik.11702672@lpu.in</p>
 </footer>
 </body>
 </html>

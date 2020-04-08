@@ -82,10 +82,10 @@ th{
 }
 
 .slide{
-	background-color: grey;
+	background-color: white;
 	box-sizing: border-box;
 width: 100%;
-height: auto;
+height: 1200px;
 }
 
 .mySlides {display: none;}
